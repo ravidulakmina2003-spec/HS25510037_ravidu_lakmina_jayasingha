@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravidu Lakmina's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#228b22',
+                        secondary: '#32cd32',
+                        dark: '#0b1d3a',
+                        darker: '#060f1f',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #329d9c;
+            color: #e2e8f0;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #228b22, #32cd32);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #228b22, #32cd32);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            left: 15px;
+            top: 0;
+            margin-left: 47%;
+            background: linear-gradient(135deg, #228b22, #32cd32);
+        }
+
+         .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            left: 15px;
+            top: 100%;
+            margin-left: 47%;
+            background: linear-gradient(135deg, #228b22, #32cd32);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #1e293b;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #228b22, #32cd32);
+            transition: width 1s ease-in-out;
+        }
+        
+    
+        .contact-input {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-input:focus {
+            border-color: #32cd32;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #228b22, #32cd32);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-dark text-slate-200">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-darker/80 backdrop-blur-sm z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold gradient-text">Lakmina</a>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-slate-200 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2">
+                <a href="#home" class="block py-2 nav-link active">Home</a>
+                <a href="#about" class="block py-2 nav-link">About</a>
+                <a href="#skills" class="block py-2 nav-link">Skills</a>
+                <a href="#contact" class="block py-2 nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Lakmina</span></h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-slate-300">Biotechnologist</h2>
+                <p class="text-lg mb-8 text-slate-400 max-w-lg">
+                    I am an undergraduate in Biotechnology with skills in molecular biology, microbiology, and genetic engineering. I am passionate about applying scientific knowledge to create innovative solutions in biotechnology.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="px-6 py-3 rounded-full btn-primary font-medium">Hire Me</a>
+                    <a href="#Education" class="px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary/10 transition">Academic background</a>
+                </div>
+                <div class="flex mt-8 space-x-4">
+                    <a href="#" class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-primary">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-600">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-400">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ravidu_lakmina?igsh=MWI2cngxZDU4bjN0Zg%3D%3D&utm_source=qr" class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-pink-600">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-xl opacity-20"></div>
+                    <img src="Images/main.jpeg" 
+                         alt="Profile" 
+                         class="relative w-full h-full object-cover rounded-full border-4 border-slate-800 floating">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-darker">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row  ">
+                <div class="md:w-1/3  mb-8 md:mb-0 flex justify-center">
+                    <div class="relative w-64 h-64 ">
+                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-secondary blur-xl opacity-20"></div>
+                        <img src="Images/part.jpeg" 
+                             alt="About" 
+                             class="relative  object-cover rounded-2xl border-4 border-slate-800">
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-6">Who am I?</h3>
+                    <p class="text-slate-400 mb-6">
+                        I am a Biotechnology undergraduate at the Sri Lanka Institute of Information Technology.
+My passion lies in integrating life sciences with digital health innovations.
+I have a strong foundation in biological sciences and skills in communication, research, and data analysis.
+I aim to apply my knowledge to real-world challenges and contribute to innovative healthcare solutions.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="font-semibold mb-2">Name: <span class="text-slate-300">Ravidu Lakmina</span></h4>
+                            <h4 class="font-semibold mb-2">Age: <span class="text-slate-300">22</span></h4>
+                            <h4 class="font-semibold mb-2">Email: <span class="text-slate-300">ravidulakmina2003@gmail.com</span></h4>
+                            <h4 class="font-semibold mb-2">Phone: <span class="text-slate-300">+94 70 343 5484</span></h4>
+                        </div>
+                        <div>
+                            
+                            <h4 class="font-semibold mb-2">Hobbies: <span class="text-slate-300">Photography, Gardening, Science Blogging</span></h4>
+                            <h4 class="font-semibold mb-2">Address: <span class="text-slate-300">Dematagahawela, Narammala</span></h4>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="Images/ict assingment 01.pdf" class="px-6 py-3 rounded-full btn-primary font-medium">Download CV</a>
+                        <a href="#contact" class="px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary/10 transition">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Experience Timeline -->
+            <div class="mt-20" id="Education">
+                <h3 class="text-2xl font-bold mb-8 text-center">Educational <span class="gradient-text">background</span></h3>
+                
+                <div class="relative max-w-3xl mx-auto">
+                    <div class="absolute left-1/2 h-full w-0.5 bg-slate-700 transform -translate-x-1/2"></div>
+                    
+                    <div class="mb-8 flex justify-between items-center w-full timeline-item">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="order-1 w-5/12 px-4 py-4 bg-slate-800 rounded-lg shadow-lg">
+                            <h4 class="text-lg font-bold mb-2">GCE (Ordinary Level)</h4>
+                            <p class="text-sm text-slate-400 mb-2">Mayurapada Central College - Narammala • 2019</p>
+                            <p class="text-slate-300">
+                                I successfully completed my GCE Advanced Level examinations with a focus on the Biological Science stream, which strengthened my foundation in biology, chemistry, and Physics
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8 flex justify-between items-center w-full timeline-item">
+                        <div class="order-1 w-5/12 px-4 py-4 bg-slate-800 rounded-lg shadow-lg">
+                            <h4 class="text-lg font-bold mb-2">GCE (Advanced Level) – Biological sciences</h4>
+                            <p class="text-sm text-slate-400 mb-2">Maliyadeva College – Kurunegala • 2022</p>
+                            <p class="text-slate-300">
+                                I successfully completed my GCE Advanced Level examinations with a focus on the Biological Science stream, which strengthened my foundation in biology, chemistry, and Physics
+                            </p>
+                        </div>
+                        <div class="order-1 w-5/12"></div>
+                    </div>
+                    
+                    <div class="mb-8 flex justify-between items-center w-full timeline-item">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="order-1 w-5/12 px-4 py-4 bg-slate-800 rounded-lg shadow-lg">
+                            <h4 class="text-lg font-bold mb-2">BSc (Hons) in Biotechnology</h4>
+                            <p class="text-sm text-slate-400 mb-2">Sri Lanka Institute of Information Technology • 2025 - present</p>
+                            <p class="text-slate-300">
+                                I am currently pursuing a Bachelor's degree in Biotechnology at the Sri Lanka Institute of Information Technology, gaining hands-on experience in molecular biology, microbiology, genetic engineering, and research techniques. My studies provide a strong foundation for applying biological knowledge to innovative solutions in healthcare, agriculture, and technology.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Technical Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Microscopy</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Pipetting and Solution Preparation</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Spectrophotometry</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Centrifugation</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Professional Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Communication</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Teamwork</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Problem Solving</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Creativity</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <p class="text-slate-400 mb-8">
+                        Feel free to reach out to me for any questions or opportunities. 
+                        I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-slate-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Address</h4>
+                                <p class="text-slate-400">Dematagahawela, Narammala</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-slate-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email</h4>
+                                <p class="text-slate-400">ravidulakmina2003@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-slate-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Phone</h4>
+                                <p class="text-slate-400">+94 70 343 5484</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-primary">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-600">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-400">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </a>
+                            <a href="https://www.instagram.com/ravidu_lakmina?igsh=MWI2cngxZDU4bjN0Zg%3D%3D&utm_source=qr" class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-pink-600">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block mb-2 font-medium">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Your Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block mb-2 font-medium">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 font-medium">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required></textarea>
+                        </div>
+                        <button type="submit" class="px-8 py-3 rounded-full btn-primary font-medium w-full">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-darker py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+                    <p class="text-slate-400 mt-2">© 2025 Ravidu Lakmina. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-primary transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-blue-600 transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-blue-400 transition">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ravidu_lakmina?igsh=MWI2cngxZDU4bjN0Zg%3D%3D&utm_source=qr" class="text-slate-400 hover:text-pink-600 transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-slate-500">
+                <p>Made with <i class="fas fa-heart text-red-500"></i> and lots of <i class="fas fa-coffee text-amber-500"></i></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    // Update active link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+            
+            // Show/hide back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (scrollPosition > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        // Back to top button
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animate skill bars on scroll
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const skillsSection = document.getElementById('skills');
+            const skillsSectionTop = skillsSection.offsetTop;
+            const windowHeight = window.innerHeight;
+            
+            if (window.scrollY > skillsSectionTop - windowHeight + 200) {
+                skillBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+                
+                // Remove event listener after animation
+                window.removeEventListener('scroll', animateSkillBars);
+            }
+        };
+        
+        window.addEventListener('scroll', animateSkillBars);
+    </script>
+</body>
+</html>
